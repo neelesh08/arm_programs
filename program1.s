@@ -1,0 +1,8 @@
+	AREA ALP1, CODE, READONLY
+	EXPORT start1
+start1
+	MOV R2,#0x12
+	MOV R3, #0x11
+	MUL R4, R3, R2
+stop B stop
+	END

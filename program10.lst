@@ -1,0 +1,72 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             ALP10,CODE,READONLY
+    2 00000000                 EXPORT           start1
+    3 00000000         start1
+    4 00000000 4806            LDR              R0, =0X10000050
+    5 00000002 F04F 010A       MOV              R1,#10      ;ARRAY SIZE
+    6 00000006 F04F 0300       MOV              R3,#0       ;COUNT INTIALIZED T
+                                                            O ZERO
+    7 0000000A         LOOP
+    8 0000000A F850 2B04       LDR              R2,[R0],#4  ; 4 bytes = 32 bit 
+                                                            numbers
+    9 0000000E         ; load data into R2 and update R0 pointer
+   10 0000000E 0012            MOVS             R2,R2       ; updaate flags- ev
+                                                            en sign flag gets u
+                                                            pdated
+   11 00000010 BF48 3301       ADDMI            R3,#1       ; if sign flag ==1,
+                                                             i.e MI is set; R3 
+                                                            is incremented
+   12 00000014 3901            SUBS             R1,#1
+   13 00000016 D1F8            BNE              LOOP
+   14 00000018 E7FE    stop    B                stop
+   15 0000001A                 END
+              00 00 10000050 
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\progra
+m10.d -o.\program10.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\K
+eil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=.\program10.lst prog
+ram10.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ALP10 00000000
+
+Symbol: ALP10
+   Definitions
+      At line 1 in file program10.s
+   Uses
+      None
+Comment: ALP10 unused
+LOOP 0000000A
+
+Symbol: LOOP
+   Definitions
+      At line 7 in file program10.s
+   Uses
+      At line 13 in file program10.s
+Comment: LOOP used once
+start1 00000000
+
+Symbol: start1
+   Definitions
+      At line 3 in file program10.s
+   Uses
+      At line 2 in file program10.s
+Comment: start1 used once
+stop 00000018
+
+Symbol: stop
+   Definitions
+      At line 14 in file program10.s
+   Uses
+      At line 14 in file program10.s
+Comment: stop used once
+4 symbols
+337 symbols in table

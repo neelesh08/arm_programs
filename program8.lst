@@ -1,0 +1,111 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             ALP8,CODE,READONLY
+    2 00000000                 EXPORT           start1
+    3 00000000         start1
+    4 00000000 F04F 0105       MOV              R1, #5      ; ARRAY SIZE-1 in o
+                                                            uter loop counter R
+                                                            1 (Pass Counter)
+    5 00000004         outloop
+    6 00000004 460B            MOV              R3, R1      ; R3 – inner loop c
+                                                            ounter (comparison 
+                                                            counter)
+    7 00000006 4807            LDR              R0,=0x10000050 ; Starting Addre
+                                                            ss of the array
+    8 00000008         INLOOP
+    9 00000008 F850 2B04       LDR              R2,[R0],#4  ; R2=First element 
+                                                            of array & post inc
+                                                            rement by 4 for nex
+                                                            t number
+   10 0000000C 6804            LDR              R4,[R0]     ; second number to 
+                                                            be compared is load
+                                                            ed into R4
+   11 0000000E 4294            CMP              R4,R2
+   12 00000010 D203            BCS              SKIP        ; Branch on carry s
+                                                            et (lower number in
+                                                             R4) to ‘no exchang
+                                                            e-SKIP’
+   13 00000012         ; else exchange
+   14 00000012         ; BCC SKIP for Descending Order
+   15 00000012         ; Store first number in R2 into array at second number p
+                       lace pointed by [R0]
+   16 00000012         ;Decreament R0 by 4 to point to previous number (first)
+   17 00000012 F840 2904       STR              R2,[R0],#-4
+   18 00000016         ; store the copied second number in R4 into first number
+                       ’s place
+   19 00000016         ; & increament R0 to point to second number location
+   20 00000016 F840 4B04       STR              R4,[R0],#4
+   21 0000001A         SKIP
+   22 0000001A 1E5B            SUBS             R3,R3,#1    ; Decrement Inner L
+                                                            oop
+   23 0000001C D1F4            BNE              INLOOP
+   24 0000001E 1E49            SUBS             R1,R1,#1    ; Decrement Outer L
+                                                            oop
+   25 00000020 D1F0            BNE              outloop
+   26 00000022 E7FE    stop    B                stop
+   27 00000024                 END
+              10000050 
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\progra
+m8.d -o.\program8.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Kei
+l\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=.\program8.lst program
+8.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ALP8 00000000
+
+Symbol: ALP8
+   Definitions
+      At line 1 in file program8.s
+   Uses
+      None
+Comment: ALP8 unused
+INLOOP 00000008
+
+Symbol: INLOOP
+   Definitions
+      At line 8 in file program8.s
+   Uses
+      At line 23 in file program8.s
+Comment: INLOOP used once
+SKIP 0000001A
+
+Symbol: SKIP
+   Definitions
+      At line 21 in file program8.s
+   Uses
+      At line 12 in file program8.s
+Comment: SKIP used once
+outloop 00000004
+
+Symbol: outloop
+   Definitions
+      At line 5 in file program8.s
+   Uses
+      At line 25 in file program8.s
+Comment: outloop used once
+start1 00000000
+
+Symbol: start1
+   Definitions
+      At line 3 in file program8.s
+   Uses
+      At line 2 in file program8.s
+Comment: start1 used once
+stop 00000022
+
+Symbol: stop
+   Definitions
+      At line 26 in file program8.s
+   Uses
+      At line 26 in file program8.s
+Comment: stop used once
+6 symbols
+339 symbols in table

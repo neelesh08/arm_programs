@@ -1,0 +1,6 @@
+Dependencies for Project 'project5', Target 'Target 1': (DO NOT MODIFY !)
+F (.\program5.s)(0x63799BF4)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC17xx--list .\program5.lst --xref -o .\program5.o --depend .\program5.d)
+F (..\arm_cortex\lcd.h)(0x5A65EE6C)()
+F (..\arm_cortex\SPI.h)(0x5A65EE6A)()
+F (..\arm_cortex\start.lib)(0x5A65EE68)()
+F (..\arm_cortex\start_up_alp.s)(0x5D81D6CA)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC17xx--list .\start_up_alp.lst --xref -o .\start_up_alp.o --depend .\start_up_alp.d)

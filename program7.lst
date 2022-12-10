@@ -1,0 +1,67 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             ALP7,CODE,READONLY
+    2 00000000                 EXPORT           start1
+    3 00000000         start1
+    4 00000000 4806            LDR              R0, =0X10000050
+    5 00000002 F04F 010A       MOV              R1,#10      ;ARRAY SIZE-1
+    6 00000006 F850 2B04       LDR              R2,[R0],#4  ; FIRST NUMBER IN R
+                                                            2
+    7 0000000A         LOOP
+    8 0000000A F850 3B04       LDR              R3,[R0],#4  ;GET NEXT NUMBER IN
+                                                             R3
+    9 0000000E 429A            CMP              R2,R3
+   10 00000010 BF28 461A       MOVHS            R2,R3
+   11 00000014 1E49            SUBS             R1,R1,#1
+   12 00000016 D1F8            BNE              LOOP
+   13 00000018 E7FE    stop    B                stop
+   14 0000001A                 END
+              00 00 10000050 
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\progra
+m7.d -o.\program7.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Kei
+l\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=.\program7.lst program
+7.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ALP7 00000000
+
+Symbol: ALP7
+   Definitions
+      At line 1 in file program7.s
+   Uses
+      None
+Comment: ALP7 unused
+LOOP 0000000A
+
+Symbol: LOOP
+   Definitions
+      At line 7 in file program7.s
+   Uses
+      At line 12 in file program7.s
+Comment: LOOP used once
+start1 00000000
+
+Symbol: start1
+   Definitions
+      At line 3 in file program7.s
+   Uses
+      At line 2 in file program7.s
+Comment: start1 used once
+stop 00000018
+
+Symbol: stop
+   Definitions
+      At line 13 in file program7.s
+   Uses
+      At line 13 in file program7.s
+Comment: stop used once
+4 symbols
+337 symbols in table

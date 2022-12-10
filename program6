@@ -1,0 +1,11 @@
+	AREA ALP6,CODE,READONLY
+	EXPORT start1
+start1
+	MOV R2, #00
+	MOV R1,#7 ; 72 to be found
+	LDR R0,=LOOKUP
+	LDRB R2,[R0,R1] ; R2 <- @mem[R0+R1]
+stop B stop
+LOOKUP
+	DCB 0,1,4,9,16,25,36,49,64,81,100
+	END

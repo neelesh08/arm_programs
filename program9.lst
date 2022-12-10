@@ -1,0 +1,67 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             ALP9,CODE,READONLY
+    2 00000000                 EXPORT           start1
+    3 00000000         start1
+    4 00000000 4805            LDR              R0,=0x10000050
+    5 00000002 8801            LDRH             R1,[R0]
+    6 00000004 F04F 0210       MOV              R2,#16
+    7 00000008         LOOP
+    8 00000008 0849            MOVS             R1,R1,LSR #1
+    9 0000000A BF2C 3301       ADDCS            R3,#1       ; Number of 1’s in 
+                                                            R3
+   10 0000000E 3401            ADDCC            R4,#1       ; Number of 0’s in 
+                                                            R4
+   11 00000010 3A01            SUBS             R2,#1
+   12 00000012 D1F9            BNE              LOOP
+   13 00000014 E7FE    stop    B                stop
+   14 00000016                 END
+              00 00 10000050 
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\progra
+m9.d -o.\program9.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Kei
+l\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=.\program9.lst program
+9.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ALP9 00000000
+
+Symbol: ALP9
+   Definitions
+      At line 1 in file program9.s
+   Uses
+      None
+Comment: ALP9 unused
+LOOP 00000008
+
+Symbol: LOOP
+   Definitions
+      At line 7 in file program9.s
+   Uses
+      At line 12 in file program9.s
+Comment: LOOP used once
+start1 00000000
+
+Symbol: start1
+   Definitions
+      At line 3 in file program9.s
+   Uses
+      At line 2 in file program9.s
+Comment: start1 used once
+stop 00000014
+
+Symbol: stop
+   Definitions
+      At line 13 in file program9.s
+   Uses
+      At line 13 in file program9.s
+Comment: stop used once
+4 symbols
+337 symbols in table

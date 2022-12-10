@@ -1,0 +1,14 @@
+	AREA ALP9,CODE,READONLY
+	EXPORT start1
+start1
+	LDR R0,=0x10000050
+	LDRH R1,[R0]
+	MOV R2,#16
+LOOP
+	MOVS R1,R1,LSR #1
+	ADDCS R3,#1 ; Number of 1’s in R3
+	ADDCC R4,#1 ; Number of 0’s in R4
+	SUBS R2,#1
+	BNE LOOP
+stop B stop
+	END

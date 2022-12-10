@@ -1,0 +1,73 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ; program to find to add an array of 16 bit numbers and 
+                       store the 32 bit result in internal RAM
+    2 00000000                 AREA             alp4 , code , readonly
+    3 00000000                 export           start1
+    4 00000000         start1
+    5 00000000 4906            LDR              r1 ,= 0x10000050 
+                                                            ; starting address
+    6 00000002 F04F 0000       mov              r0 , #0     ; to store sum 
+    7 00000006 F04F 020A       mov              r2 , #10    ; 10 numbers
+    8 0000000A         loop
+    9 0000000A F831 3B02       LDRH             r3 ,[r1] , #2 ; post indexing m
+                                                            ode 
+   10 0000000E 4418            add              r0 ,r0 , r3
+   11 00000010 1E52            subs             r2, r2, #1  ; decrement counter
+                                                            
+   12 00000012 D1FA            BNE              loop
+   13 00000014 4902            LDR              r1 ,= 0x10000080
+   14 00000016 6008            str              r0 , [r1]   ; storing the value
+                                                             at r1 location
+   15 00000018 E7FE    stop    b                stop
+   16 0000001A                 end
+              00 00 10000050 
+              10000080 
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\progra
+m4.d -o.\program4.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Kei
+l\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=.\program4.lst program
+4.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+alp4 00000000
+
+Symbol: alp4
+   Definitions
+      At line 2 in file program4.s
+   Uses
+      None
+Comment: alp4 unused
+loop 0000000A
+
+Symbol: loop
+   Definitions
+      At line 8 in file program4.s
+   Uses
+      At line 12 in file program4.s
+Comment: loop used once
+start1 00000000
+
+Symbol: start1
+   Definitions
+      At line 4 in file program4.s
+   Uses
+      At line 3 in file program4.s
+Comment: start1 used once
+stop 00000018
+
+Symbol: stop
+   Definitions
+      At line 15 in file program4.s
+   Uses
+      At line 15 in file program4.s
+Comment: stop used once
+4 symbols
+337 symbols in table

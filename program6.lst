@@ -1,0 +1,67 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             ALP6,CODE,READONLY
+    2 00000000                 EXPORT           start1
+    3 00000000         start1
+    4 00000000 F04F 0200       MOV              R2, #00
+    5 00000004 F04F 0107       MOV              R1,#7       ; 72 to be found
+    6 00000008 4804            LDR              R0,=LOOKUP
+    7 0000000A 5C42            LDRB             R2,[R0,R1]  ; R2 <- @mem[R0+R1]
+                                                            
+    8 0000000C E7FE    stop    B                stop
+    9 0000000E         LOOKUP
+   10 0000000E 00 01 04 
+              09 10 19 
+              24 31 40 
+              51 64            DCB              0,1,4,9,16,25,36,49,64,81,100
+   11 00000019                 END
+              00 00 00 
+              00000000 
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\progra
+m6.d -o.\program6.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Kei
+l\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=.\program6.lst program
+6.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ALP6 00000000
+
+Symbol: ALP6
+   Definitions
+      At line 1 in file program6.s
+   Uses
+      None
+Comment: ALP6 unused
+LOOKUP 0000000E
+
+Symbol: LOOKUP
+   Definitions
+      At line 9 in file program6.s
+   Uses
+      At line 6 in file program6.s
+Comment: LOOKUP used once
+start1 00000000
+
+Symbol: start1
+   Definitions
+      At line 3 in file program6.s
+   Uses
+      At line 2 in file program6.s
+Comment: start1 used once
+stop 0000000C
+
+Symbol: stop
+   Definitions
+      At line 8 in file program6.s
+   Uses
+      At line 8 in file program6.s
+Comment: stop used once
+4 symbols
+337 symbols in table
